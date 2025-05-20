@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>KAFAN DIGITALS | Contact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    main {
+      padding-top: 70px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="container header-container">
+        <a href="#" class="logo">KAFAN DIGITALS</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Toast message -->
+   <div id="messageBox" class="toast hidden"></div>
+
+
+    <div class="container contact-container">
+      <h2>Contact Us</h2>
+      <form action="/send" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <p class="footer-left">Designed by Kabir Almustapha Fandirma</p>
+      <p class="footer-right">© 2025 KAFAN DIGITALS. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+  const params = new URLSearchParams(window.location.search);
+  const success = params.get("success");
+  const messageBox = document.getElementById("messageBox");
+
+  if (success === "1") {
+    messageBox.textContent = "✅ Message sent successfully!";
+    messageBox.className = "toast success show";
+    setTimeout(() => {
+      messageBox.classList.remove("show");
+    }, 4000); // hide after 4 seconds
+  } else if (success === "0") {
+    messageBox.textContent = "❌ Message failed to send.";
+    messageBox.className = "toast error show";
+    setTimeout(() => {
+      messageBox.classList.remove("show");
+    }, 4000); // hide after 4 seconds
+  }
+</script>
+
+  
+</body>
+</html>

@@ -1,0 +1,241 @@
+/* ===== Reset & Base Styles ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  padding: 20px;
+  color: #333;
+}
+
+/* ===== Navbar Styles ===== */
+.navbar {
+  background: #fff;
+  padding: 15px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: fixed;      /* Fix navbar on top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar .container {
+  max-width: 260px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 24px;
+  color: #764ba2;
+  text-decoration: none;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+/* ===== Main Container & Form Styles ===== */
+main {
+  padding-top: 70px;  /* space for fixed navbar */
+}
+
+.container {
+  background: #fff;
+  max-width: 480px;
+  width: 100%;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  margin: 30px auto 0;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: #4a4a4a;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 15px 20px;
+  margin: 15px 0;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #764ba2;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ===== Button Styles ===== */
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 15px 0;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(102,126,234,0.4);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #5a67d8, #6b46c1);
+  box-shadow: 0 12px 20px rgba(107,70,193,0.6);
+}
+
+/* ===== Message Box Styles ===== */
+#messageBox {
+  margin-bottom: 20px;
+  font-weight: 600;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  display: none;
+}
+
+.success {
+  background-color: #e0f8e9;
+  color: #2a7a32;
+  border: 1px solid #2a7a32;
+  display: block;
+}
+
+.error {
+  background-color: #fbeaea;
+  color: #a63939;
+  border: 1px solid #a63939;
+  display: block;
+}
+
+/* ===== Footer Styles ===== */
+footer {
+  background: #764ba2;
+  color: #0e0202;
+  padding: 20px 0;
+  margin-top: 50px;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.footer-container p {
+  margin: 5px 0;
+}
+
+/* ===== Responsive Styles ===== */
+@media (max-width: 520px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+
+  .navbar .container {
+    padding: 0 10px;
+  }
+}
+/* ===== Center Header Logo ===== */
+.header-container {
+  justify-content: center !important;
+}
+
+/* ===== Toast Styles ===== */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  min-width: 250px;
+  max-width: 90%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  display: none;
+}
+
+.toast.show {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.toast.success {
+  background-color: #e0f8e9;
+  color: #2a7a32;
+  border-left: 6px solid #2a7a32;
+}
+
+.toast.error {
+  background-color: #fbeaea;
+  color: #a63939;
+  border-left: 6px solid #a63939;
+}
+/* ===== Toast Styles ===== */
+.toast {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  min-width: 250px;
+  max-width: 90%;
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: center;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, top 0.3s ease;
+}
+
+.toast.show {
+  display: block;
+  opacity: 1;
+  top: 80px;
+}
+
+.toast.success {
+  background-color: #e0f8e9;
+  color: #2a7a32;
+  border: 1px solid #2a7a32;
+}
+
+.toast.error {
+  background-color: #fbeaea;
+  color: #a63939;
+  border: 1px solid #a63939;
+}
