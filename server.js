@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -14,29 +14,30 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.post('/send', (req, res) => {
   const { name, email, message } = req.body;
 
-  // Create reusable transporter object using Gmail SMTP
+  // Create transporter
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: 'kabirabbaalmustapha@gmail.com',
-      pass: 'xgvlruilyfsflnma' // Use environment variables for security in production!
+      pass: 'xgvlruilyfsflnma' // Consider using environment variables
     }
   });
 
+  // Email content
   const mailOptions = {
-    from: email,
+    from: 'kabirabbaalmustapha@gmail.com',
     to: 'kabirabbaalmustapha@gmail.com',
-    subject: `Message from ${name}`,
-    text: message
+    subject: `New message from ${name}`,
+    text: `You have received a new message:\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
   };
 
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
       console.error('Error sending mail:', err);
-      return res.redirect('/index.html?success=0');
+      return res.redirect('/?success=0');
     } else {
       console.log('Email sent:', info.response);
-      return res.redirect('/index.html?success=1');
+      return res.redirect('/?success=1');
     }
   });
 });
